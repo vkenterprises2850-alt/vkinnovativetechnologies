@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VK Innovative Technologies</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css.css" />
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <img src="orginal.png" alt="VK Innovative Technologies" class="navbar-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="industrial.html">Industrial</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Products</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Resources
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                            <li><a class="dropdown-item" href="Resources level 1.html">Level 1 kit</a></li>
+                            <li><a class="dropdown-item" href="#level2">Level 2 kit</a></li>
+                            <li><a class="dropdown-item" href="#level3">Level 3 kit</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#footer">Contact</a></li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-glow btn-sm" href="#contact">Get Quote</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-badge"><i class="fas fa-microchip me-2"></i>Hardware · Embedded · IOT</div>
+                    <h1>Build the <span>Future</span> with Smart Tech</h1>
+                    <p class="lead">
+                        "From custom circuit development to final product deployment. Empowering industry innovators and
+                        supporting student engineers at VK Innovative Technologies."
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#projects" class="btn btn-glow">Explore Products</a>
+                        <a href="#categories" class="btn btn-outline-glow">Browse Categories</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 hero-visual" style="position: relative; display: inline-block;">
+
+                    <!-- 1. YOUR NEW IMAGE GOES HERE -->
+                    <img src="image_cb0ef202.png" alt="New Kit Image " class="home1"
+                        style="width: 100%; max-width: 500px; display: block; border-radius: 12px;">
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ STATS ═══════════════════════════ -->
+    <div class="container py-5">
+        <div class="row g-3">
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-num">50+</div>
+                    <div class="stat-label">Mini Projects</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-num">6</div>
+                    <div class="stat-label">Tech Domains</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-num">100%</div>
+                    <div class="stat-label">Open Learning</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-num">24/7</div>
+                    <div class="stat-label">Resource Access</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════ CATEGORIES ═══════════════════════════ -->
+    <section id="categories">
+        <div class="container">
+            <div class="section-label">What We Cover</div>
+            <h2 class="section-title">Technology Categories</h2>
+            <p class="section-sub">From physical circuits to web interfaces — explore every layer of the technology
+                stack.</p>
+            <div class="row g-4">
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="#projects" class="cat-card" onclick="filterProjects('semiconductor')">
+                        <div class="cat-icon bg-orange"><i class="fas fa-hdd c-orange"></i></div>
+                        <h5>Project Support</h5>
+                        <p>Transistors, MOSFETs, diodes, logic gates, IC design fundamentals and device physics.</p>
+                        <span class="cat-count tag-orange">10+ Topics</span>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="#projects" class="cat-card" onclick="filterProjects('hardware')">
+                        <div class="cat-icon bg-cyan"><i class="fas fa-microchip c-cyan"></i></div>
+                        <h5>Hardware Projects</h5>
+                        <p>Circuit design, PCB layout, IoT prototypes, sensor interfacing and hands-on build guides.</p>
+                        <span class="cat-count tag-cyan">15+ Projects</span>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="#projects" class="cat-card" onclick="filterProjects('embedded')">
+                        <div class="cat-icon bg-green"><i class="fas fa-robot c-green"></i></div>
+                        <h5>Embedded Systems</h5>
+                        <p>Arduino, Raspberry Pi, STM32, RTOS, firmware development and bare-metal programming.</p>
+                        <span class="cat-count tag-purple">12+ Projects</span>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="#projects" class="cat-card" onclick="filterProjects('semiconductor')">
+                        <div class="cat-icon bg-purple"><i class="fas fa-network-wired c-purple"></i></div>
+                        <h5>Semiconductor</h5>
+                        <p>Transistors, MOSFETs, diodes, logic gates, IC design fundamentals and device physics.</p>
+                        <span class="cat-count tag-orange">10+ Topics</span>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <a href="#projects" class="cat-card" onclick="filterProjects('semiconductor')">
+                        <div class="cat-icon bg-pink"><i class="fas fa-globe c-pink"></i></div>
+                        <h5>IOT</h5>
+                        <p>Transistors, MOSFETs, diodes, logic gates, IC design fundamentals and device physics.</p>
+                        <span class="cat-count tag-orange">10+ Topics</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ PROJECTS ═══════════════════════════ -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-label">Hands-On Work</div>
+            <h2 class="section-title">Featured Products</h2>
+            <p class="section-sub">Click a category below to filter. All projects include source code and documentation.
+            </p>
+
+            <div class="filter-tabs" id="filterTabs">
+                <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
+                <button class="filter-btn" onclick="filterProjects('Explorer', this)">Explorer Kit Level-1</button>
+                <button class="filter-btn" onclick="filterProjects('embedded', this)">Explorer Kit Level-2</button>
+                <button class="filter-btn" onclick="filterProjects('hardware', this)">Hardware </button>
+            </div>
+
+            <div class="row g-4" id="projectGrid">
+
+
+                <!-- Explorer Kit Level-1 -->
+                <!-- Project Card Item Links to Products Page -->
+                <div class="col-sm-6 col-lg-4 project-item" data-cat="Explorer">
+                    <a href="Explorer kit 1.html" class="project-card-link"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <div class="project-card">
+                            <div class="project-thumb" style="background:rgba(0,212,255,0.06);">🔌</div>
+                            <div class="project-body">
+                                <h6>Explorer kit 1</h6>
+                                <p>Relay-based home control via smartphone using Wi-Fi module and custom PCB.</p>
+                                <div>
+                                    <span class="tag tag-cyan">Hardware</span>
+                                    <span class="tag tag-purple">IoT</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <!--Explorer Kit Level-2 -->
+                <div class="col-sm-6 col-lg-4 project-item" data-cat="embedded">
+                    <a href="Explorer kit 2.html" class="project-card-link"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <div class="project-card">
+                            <div class="project-thumb" style="background:rgba(123,47,255,0.07);">🤖</div>
+                            <div class="project-body">
+                                <h6>Explorer kit 2</h6>
+                                <p>PID-controlled autonomous robot following a black line track with IR sensors.</p>
+                                <div>
+                                    <span class="tag tag-purple">Embedded</span>
+                                    <span class="tag tag-cyan">Arduino</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </a>
+                </div>
+
+
+
+                <!-- Hardware -->
+                <div class="col-sm-6 col-lg-4 project-item" data-cat="hardware">
+                    <div class="project-card">
+                        <div class="project-thumb" style="background:rgba(249,115,22,0.07);">⚡</div>
+                        <div class="project-body">
+                            <h6>MOSFET Amplifier Design</h6>
+                            <p>Common-source amplifier simulation with bias analysis and frequency response plots.</p>
+                            <div>
+                                <span class="tag tag-orange">Semiconductors</span>
+                                <span class="tag tag-cyan">Analog</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ ABOUT ═══════════════════════════ -->
+    <section id="about">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="section-label">Who We Are</div>
+                    <h2 class="section-title">VK Innovative Technologies</h2>
+                    <p class="about-text">
+                        We are a dual-focused technology hub specializing in custom hardware engineering services and
+                        technical education. We seamlessly blend complex embedded systems with physical circuit
+                        development to serve both industry clients and the maker community.
+                    </p>
+                    <p class="about-text mb-4">
+                        For Clients : We fulfill end-to-end technical requirements, delivering robust embedded firmware,
+                        semiconductor layouts, and custom hardware systems tailored to your business needs. <br>
+                        For Students & Makers : We provide the schematics, hands-on guides, and community support needed
+                        to scale your skills from basic wiring to advanced hardware engineering.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle c-cyan"></i>
+                            <span class="about-check">Custom Client Solutions</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle c-cyan"></i>
+                            <span class="about-check">Hands-On Student Labs</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle c-cyan"></i>
+                            <span class="about-check">Comprehensive Hardware Guides</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="stat-card">
+                                <div class="stat-num c-cyan">50+</div>
+                                <div class="stat-label">Projects Built</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-card">
+                                <div class="stat-num c-purple">99.9%</div>
+                                <div class="stat-label">Uptime & Deployment</div>
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-card">
+                                <div class="stat-num stat-green">24/7</div>
+                                <div class="stat-label">Community Support</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-card">
+                                <div class="stat-num stat-orange">∞</div>
+                                <div class="stat-label"> Scalability</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ GET QUOTE ═══════════════════════════ -->
+     <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <div class="section-label">Get In Touch</div>
+                        <h2 class="section-title">Get Quote</h2>
+                        <p class="section-sub mx-auto">Have a project idea, question, or want to collaborate? Drop us a
+                            message.</p>
+                    </div>
+ 
+                    <!-- ── Alert Box ──────────────────────────────────── -->
+                    <div id="formAlert" class="alert d-none mb-3" role="alert"></div>
+ 
+                    <div class="contact-card">
+                        <div class="row g-3">
+ 
+                            <!-- Name -->
+                            <div class="col-md-6">
+                                <label for="contactName">Your Name</label>
+                                <input id="contactName" type="text" class="form-control"
+                                    placeholder="John Doe" autocomplete="off"/>
+                                <div class="invalid-feedback" id="err-name"></div>
+                            </div>
+ 
+                            <!-- Email -->
+                            <div class="col-md-6">
+                                <label for="contactEmail">Email Address</label>
+                                <input id="contactEmail" type="email" class="form-control"
+                                    placeholder="john@example.com" autocomplete="off"/>
+                                <div class="invalid-feedback" id="err-email"></div>
+                            </div>
+ 
+                            <!-- Topic -->
+                            <div class="col-12">
+                                <label for="contactTopic">Topic</label>
+                                <select id="contactTopic" class="form-select">
+                                    <option value="">Select a topic…</option>
+                                    <option>Hardware Project</option>
+                                    <option>Embedded Systems</option>
+                                    <option>Semiconductor</option>
+                                    <option>HTML / CSS</option>
+                                    <option>JavaScript</option>
+                                    <option>Bootstrap</option>
+                                    <option>General Inquiry</option>
+                                </select>
+                                <div class="invalid-feedback" id="err-topic"></div>
+                            </div>
+ 
+                            <!-- Message -->
+                            <div class="col-12">
+                                <label for="contactMessage">Message</label>
+                                <textarea id="contactMessage" class="form-control" rows="5"
+                                    placeholder="Tell us about your project or question…"></textarea>
+                                <div class="invalid-feedback" id="err-message"></div>
+                            </div>
+ 
+                            <!-- Submit Button -->
+                            <div class="col-12 text-center pt-2">
+                                <button class="btn btn-glow px-5" id="sendBtn" onclick="submitForm()">
+                                    <i class="fas fa-paper-plane me-2"></i>
+                                    <span id="sendBtnText">Send Message</span>
+                                </button>
+                                <div class="wa-info mt-2">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>Message will open directly in WhatsApp</span>
+                                </div>
+                            </div>
+ 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+
+    <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row g-4">
+
+                <!-- Brand and Contact Info Column -->
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <span class="brand-vk">VK</span><span class="brand-rest"> Innovative Technologies</span>
+                    </div>
+                    <p class="footer-desc text-light opacity-75 mb-3" style="line-height: 1.6; font-size: 14px;">
+                        Nestinn Building, Street 4,<br>
+                        Addagutta Society, Western Hills,<br>
+                        Near JNTU, Hyderabad - 500085
+                    </p>
+                    <!-- Interactive Email Link Block -->
+                    <p class="footer-desc">
+                        <a href="mailto:vkenterprises2850@gmail.com" class="footer-email-link"
+                            title="Click to send an email"
+                            style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: inherit;">
+                            <!-- Clean Inline SVG Envelope Icon -->
+                            <svg xmlns="http://w3.org" width="16" height="16" fill="currentColor"
+                                class="bi bi-envelope-at-fill text-primary" viewBox="0 0 16 16">
+                                <path
+                                    d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671" />
+                                <path
+                                    d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791" />
+                            </svg>
+                            <span>vkenterprises2850@gmail.com</span>
+                        </a> <br>
+                        <span>📞 6281938249</span>
+                    </p>
+
+                    <!-- Social Buttons Area -->
+                    <div class="mt-3">
+                        <!-- <a href="mailto:vkenterprises2850@gmail.com" class="social-btn" title="Email Us"></a> -->
+                        <a class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Navigation Column -->
+                <div class="col-6 col-lg-2">
+                    <div class="footer-title">Navigate</div>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#categories">Industrial</a></li>
+                        <li><a href="#projects">Products</a></li>
+                        <li><a href="#projects">Resources</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categories Column -->
+                <div class="col-6 col-lg-2">
+                    <div class="footer-title">Categories</div>
+                    <ul class="footer-links">
+                        <li><a href="#categories">Hardware</a></li>
+                        <li><a href="#categories">Embedded</a></li>
+                        <li><a href="#categories">Semiconductor</a></li>
+                        <li><a href="#categories">IOT</a></li>
+                        <li><a href="#categories">Project support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Column -->
+                <div class="col-lg-4">
+                    <div class="footer-title">Stay Updated</div>
+                    <p class="footer-newsletter-text">Get new project drops and tutorials in your inbox.</p>
+                    <div class="d-flex gap-2">
+                        <input type="email" class="form-control" placeholder="your@email.com" />
+                        <button class="btn btn-glow px-3" onclick="subscribe(this)"><i
+                                class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright Area -->
+            <div class="footer-bottom mt-4 pt-3 border-top d-flex justify-content-between flex-wrap gap-2">
+                <p>&copy; 2026 Srikrishna GVK Enterprises · vkinnovativetechnologies.com. All rights reserved.</p>
+                <p class="m-0">
+                    Built with Passion - <span class="text-info fw-semibold">Firmware · PCB Design · Embedded C ·
+                        IoT</span>
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- Scroll to Top -->
+    <button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="JavaScript.js"></script>
+     <script>
+ 
+        /* ── CONFIG ──────────────────────────────────────────────────────
+           Development : http://localhost:8080/api/contact
+           Production  : https://yourdomain.com/api/contact
+        ────────────────────────────────────────────────────────────────── */
+        const API_BASE_URL = "http://localhost:8080/api/contact";
+ 
+        /* ── HELPERS ─────────────────────────────────────────────────── */
+        const el = (id) => document.getElementById(id);
+ 
+        function clearErrors() {
+            ["contactName", "contactEmail", "contactTopic", "contactMessage"].forEach(id => {
+                el(id).classList.remove("is-invalid");
+            });
+            ["err-name", "err-email", "err-topic", "err-message"].forEach(id => {
+                const e = el(id);
+                if (e) e.textContent = "";
+            });
+            el("formAlert").className = "alert d-none mb-3";
+            el("formAlert").textContent = "";
+        }
+ 
+        function showFieldError(field, msg) {
+            const map = {
+                name:    "contactName",
+                email:   "contactEmail",
+                topic:   "contactTopic",
+                message: "contactMessage"
+            };
+            const input = el(map[field]);
+            if (input) {
+                input.classList.add("is-invalid");
+                const errEl = el("err-" + field);
+                if (errEl) errEl.textContent = msg;
+            }
+        }
+ 
+        function showAlert(type, text) {
+            const a = el("formAlert");
+            a.className = `alert alert-${type} mb-3`;
+            a.textContent = text;
+        }
+ 
+        function setLoading(loading) {
+            const btn  = el("sendBtn");
+            const text = el("sendBtnText");
+            btn.disabled = loading;
+            text.innerHTML = loading
+                ? '<span class="btn-spinner"></span>Opening WhatsApp…'
+                : '<i class="fas fa-paper-plane me-2"></i>Send Message';
+        }
+ 
+        /* ── CLIENT-SIDE VALIDATION ──────────────────────────────────── */
+        function validateLocally(data) {
+            const errors = {};
+            if (!data.name || data.name.trim().length < 2)
+                errors.name = "Please enter your full name (min 2 characters).";
+            if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
+                errors.email = "Please enter a valid email address.";
+            if (!data.topic)
+                errors.topic = "Please select a topic.";
+            if (!data.message || data.message.trim().length < 10)
+                errors.message = "Message must be at least 10 characters.";
+            return errors;
+        }
+ 
+        /* ── MAIN SUBMIT ─────────────────────────────────────────────── */
+        async function submitForm() {
+            clearErrors();
+ 
+            // 1. Collect
+            const data = {
+                name:    el("contactName").value.trim(),
+                email:   el("contactEmail").value.trim(),
+                topic:   el("contactTopic").value,
+                message: el("contactMessage").value.trim()
+            };
+ 
+            // 2. Client-side validation
+            const localErrors = validateLocally(data);
+            if (Object.keys(localErrors).length > 0) {
+                Object.entries(localErrors).forEach(([f, m]) => showFieldError(f, m));
+                showAlert("danger", "⚠️ Please fix the highlighted fields before sending.");
+                return;
+            }
+ 
+            // 3. Call Spring Boot backend
+            setLoading(true);
+            try {
+                const response = await fetch(`${API_BASE_URL}/submit`, {
+                    method:  "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body:    JSON.stringify(data)
+                });
+ 
+                const result = await response.json();
+ 
+                if (result.success && result.whatsappUrl) {
+                    // ✅ Open WhatsApp
+                    showAlert("success", "✅ Opening WhatsApp with your message…");
+                    setTimeout(() => window.open(result.whatsappUrl, "_blank"), 700);
+ 
+                    // Reset form
+                    el("contactName").value    = "";
+                    el("contactEmail").value   = "";
+                    el("contactTopic").value   = "";
+                    el("contactMessage").value = "";
+ 
+                } else if (result.errors) {
+                    // ❌ Server validation errors
+                    Object.entries(result.errors).forEach(([f, m]) => showFieldError(f, m));
+                    showAlert("danger", "⚠️ Please fix the highlighted fields.");
+                } else {
+                    showAlert("danger", "Something went wrong. Please try again.");
+                }
+                
+            } catch (err) {
+                console.error("API Error:", err);
+                showAlert("danger",
+                    "⚠️ Cannot connect to server. Make sure Spring Boot is running on port 8080.");
+            } finally {
+                setLoading(false);
+            }
+        }
+ 
+        /* ── Ctrl + Enter to submit ──────────────────────────────────── */
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && e.ctrlKey) submitForm();
+        });
+ 
+    </script>
+ 
+</body>
+
+</html>
