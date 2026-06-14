@@ -881,7 +881,27 @@ footer {
     color: #00e5ff !important;
 }
 
+/* ════════════════════════════════════════
+   MOBILE MENU TAP FIX
+════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .navbar {
+    /* Forces mobile graphics processors to isolate the navbar layer */
+    transform: translateZ(0); 
+    -webkit-transform: translateZ(0);
+  }
+  
+  .navbar-toggler {
+    position: relative;
+    z-index: 1050 !important; /* Pushes the 3-line button above everything else */
+    pointer-events: auto !important; /* Guarantees the touch registers on the button */
+  }
 
+  .navbar-collapse {
+    position: relative;
+    z-index: 1040 !important;
+  }
+}
 
 
 

@@ -167,18 +167,38 @@ function subscribe(btn) {
    Collapses the Bootstrap navbar when a
    nav link is tapped on mobile.
 ════════════════════════════════════════ */
+/* ════════════════════════════════════════
+   7. NAVBAR — CLOSE MOBILE MENU ON LINK CLICK (Fixed)
+   Collapses the Bootstrap navbar when a
+   nav link is clicked on mobile, bypassing observer loops.
+════════════════════════════════════════ */
 (function initMobileNavClose() {
   var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
   var navCollapse = document.getElementById('navMenu');
+  var navToggler = document.querySelector('.navbar-toggler');
+
+  // Fix 1: Stop event bubbling on the 3-line toggle button itself
+  if (navToggler) {
+    navToggler.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
 
   navLinks.forEach(function (link) {
-    link.addEventListener('click', function () {
+    // Fix 2: If it's a dropdown toggle link, do not force-close the whole menu
+    if (link.classList.contains('dropdown-toggle')) return;
+
+    link.addEventListener('click', function (e) {
       // Only collapse if the menu is currently open (mobile view)
       if (navCollapse && navCollapse.classList.contains('show')) {
+        
         // Use Bootstrap's Collapse API if available
         if (window.bootstrap && window.bootstrap.Collapse) {
           var bsCollapse = window.bootstrap.Collapse.getInstance(navCollapse);
-          if (bsCollapse) bsCollapse.hide();
+          if (!bsCollapse) {
+            bsCollapse = new window.bootstrap.Collapse(navCollapse, { toggle: false });
+          }
+          bsCollapse.hide();
         } else {
           navCollapse.classList.remove('show');
         }
