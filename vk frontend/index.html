@@ -17,38 +17,100 @@
 
     <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
     <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#home">
-                <img src="orginal.png" alt="VK Innovative Technologies" class="navbar-logo" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
-                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="industrial.html">Industrial</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Products</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Resources
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
-                            <li><a class="dropdown-item" href="Resources level 1.html">Level 1 kit</a></li>
-                            <li><a class="dropdown-item" href="#level2">Level 2 kit</a></li>
-                            <li><a class="dropdown-item" href="#level3">Level 3 kit</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#footer">Contact</a></li>
-                    <li class="nav-item ms-2">
-                        <a class="btn btn-glow btn-sm" href="#contact">Get Quote</a>
-                    </li>
-                </ul>
-            </div>
+    <div class="container">
+        <a class="navbar-brand" href="#home">
+            <img src="orginal.png" alt="VK Innovative Technologies" class="navbar-logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+                <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="industrial.html">Industrial</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Products</a></li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Resources
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                        <li><a class="dropdown-item" href="Resources level 1.html">Level 1 kit</a></li>
+                        <li><a class="dropdown-item" href="Resources level 2.html">Level 2 kit</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#careersModal">Careers</a>
+                </li>
+                
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#footer">Contact</a></li>
+                <li class="nav-item ms-2">
+                    <a class="btn btn-glow btn-sm" href="#contact">Get Quote</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
+<div class="modal fade" id="careersModal" tabindex="-1" aria-labelledby="careersModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content" style="background-color: #101036; border: 1px solid rgba(0, 212, 255, 0.2); color: #ffffff; border-radius: 12px;">
+            
+            <div class="modal-body" style="padding: 35px 25px; text-align: center;">
+                <div class="mb-3" style="font-size: 36px; color: #00d4ff;">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h4 style="color: #ffffff; font-weight: 600; margin-bottom: 20px; letter-spacing: 0.5px;">Current Openings</h4>
+                
+                <div class="job-posts-container mb-4" style="text-align: left; background: rgba(255, 255, 255, 0.03); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05); padding: 15px 20px;">
+                    
+                    <div class="job-item mb-3 pb-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <h5 style="color: #00d4ff; font-size: 15px; margin: 0; font-weight: 600;">Embedded Firmware Engineer</h5>
+                            <span class="badge" style="background: rgba(0, 212, 255, 0.15); color: #00d4ff; font-size: 11px; font-weight: 500; border: 1px solid rgba(0, 212, 255, 0.2);">Full-Time</span>
+                        </div>
+                        <p style="font-size: 13px; color: #a1a1c2; margin: 5px 0 0 0;">Skills: Embedded C, Arduino, ESP32, STM32, RTOS architectures.</p>
+                    </div>
+
+                    <div class="job-item mb-3 pb-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <h5 style="color: #00d4ff; font-size: 15px; margin: 0; font-weight: 600;">Hardware & PCB Design Engineer</h5>
+                            <span class="badge" style="background: rgba(121, 40, 202, 0.15); color: #b67bfb; font-size: 11px; font-weight: 500; border: 1px solid rgba(121, 40, 202, 0.2);">Full-Time</span>
+                        </div>
+                        <p style="font-size: 13px; color: #a1a1c2; margin: 5px 0 0 0;">Skills: Schematic capture, KiCad/Altium Designer, Multilayer routing.</p>
+                    </div>
+
+                    <div class="job-item">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <h5 style="color: #00d4ff; font-size: 15px; margin: 0; font-weight: 600;">IoT Product Developer</h5>
+                            <span class="badge" style="background: rgba(0, 212, 255, 0.15); color: #00d4ff; font-size: 11px; font-weight: 500; border: 1px solid rgba(0, 212, 255, 0.2);">Internship</span>
+                        </div>
+                        <p style="font-size: 13px; color: #a1a1c2; margin: 5px 0 0 0;">Skills: MQTT, HTTP, Node-RED, Sensor Integration, Wireless Modems.</p>
+                    </div>
+
+                </div>
+                
+                <p style="font-size: 15px; line-height: 1.6; color: #d1d1f0; margin-bottom: 25px;">
+                    If you are interested to work with us, please send your updated resume / CV to: <br>
+                    <strong style="color: #ffffff; display: block; margin-top: 8px; font-size: 15px; word-break: break-all; background: rgba(0, 212, 255, 0.05); padding: 8px; border-radius: 6px; border: 1px dashed rgba(0, 212, 255, 0.3);">
+                        info@vkinnovativetechnologies.in
+                    </strong>
+                </p>
+                
+                <button type="button" class="btn px-5 py-2" data-bs-dismiss="modal" 
+                    style="background: linear-gradient(135deg, #00d4ff, #7928ca); border: none; color: #ffffff; font-weight: 500; font-size: 14px; border-radius: 6px; width: 100%; max-width: 140px; transition: opacity 0.2s; letter-spacing: 0.5px;"
+                    onmouseover="this.style.opacity='0.9'"
+                    onmouseout="this.style.opacity='1.0'">
+                    OK
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
     <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
     <section id="home" class="hero">
@@ -391,95 +453,87 @@
 
     <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
     <footer id="footer">
-        <div class="container">
-            <div class="row g-4">
+    <div class="container">
+        <div class="row g-4">
 
-                <!-- Brand and Contact Info Column -->
-                <div class="col-lg-4">
-                    <div class="footer-brand">
-                        <span class="brand-vk">VK</span><span class="brand-rest"> Innovative Technologies</span>
-                    </div>
-                    <p class="footer-desc text-light opacity-75 mb-3" style="line-height: 1.6; font-size: 14px;">
-                        Nestinn Building, Street 4,<br>
-                        Addagutta Society, Western Hills,<br>
-                        Near JNTU, Hyderabad - 500085
-                    </p>
-                    <!-- Interactive Email Link Block -->
-                    <p class="footer-desc">
-                        <a href="mailto:vkenterprises2850@gmail.com" class="footer-email-link"
-                            title="Click to send an email"
-                            style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: inherit;">
-                            <!-- Clean Inline SVG Envelope Icon -->
-                            <svg xmlns="http://w3.org" width="16" height="16" fill="currentColor"
-                                class="bi bi-envelope-at-fill text-primary" viewBox="0 0 16 16">
-                                <path
-                                    d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671" />
-                                <path
-                                    d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04_c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791" />
-                            </svg>
-                            <span>vkenterprises2850@gmail.com</span>
-                        </a> <br>
-                        <span>📞 6281938249</span>
-                    </p>
-
-                    <!-- Social Buttons Area -->
-                    <div class="mt-3">
-                        <!-- <a href="mailto:vkenterprises2850@gmail.com" class="social-btn" title="Email Us"></a> -->
-                        <a class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
+            <div class="col-lg-4">
+                <div class="footer-brand">
+                    <span class="brand-vk">VK</span><span class="brand-rest"> Innovative Technologies</span>
                 </div>
+                <p class="footer-desc text-light opacity-75 mb-3" style="line-height: 1.6; font-size: 14px;">
+                    Nestinn Building, Street 4,<br>
+                    Addagutta Society, Western Hills,<br>
+                    Near JNTU, Hyderabad - 500085
+                </p>
+                <p class="footer-desc">
+                    <a href="javascript:void(0);" id="footerEmailBtn" class="footer-email-link"
+                        title="Click to request a quote via WhatsApp"
+                        style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: inherit;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-envelope-at-fill text-primary" viewBox="0 0 16 16">
+                            <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671" />
+                            <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791" />
+                        </svg>
+                        <span>info@vkinnovativetechnologies.in</span>
+                    </a> <br>
+                    <span>📞 6281938249</span>
+                </p>
 
-                <!-- Navigation Column -->
-                <div class="col-6 col-lg-2">
-                    <div class="footer-title">Navigate</div>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#categories">Industrial</a></li>
-                        <li><a href="#projects">Products</a></li>
-                        <li><a href="#projects">Resources</a></li>
-                        <li><a href="#about">About</a></li>
-                    </ul>
+                <div class="mt-3">
+                    <a class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
-
-                <!-- Categories Column -->
-                <div class="col-6 col-lg-2">
-                    <div class="footer-title">Categories</div>
-                    <ul class="footer-links">
-                        <li><a href="#categories">Hardware</a></li>
-                        <li><a href="#categories">Embedded</a></li>
-                        <li><a href="#categories">Semiconductor</a></li>
-                        <li><a href="#categories">IOT</a></li>
-                        <li><a href="#categories">Project support</a></li>
-                    </ul>
-                </div>
-
-                <!-- Newsletter Column -->
-                <div class="col-lg-4">
-                    <div class="footer-title">Stay Updated</div>
-                    <p class="footer-newsletter-text">Get new project drops and tutorials in your inbox.</p>
-                    <div class="d-flex gap-2">
-                        <input type="email" class="form-control" placeholder="your@email.com" />
-                        <button class="btn btn-glow px-3" onclick="subscribe(this)"><i
-                                class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
             </div>
 
-            <!-- Bottom Copyright Area -->
-            <div class="footer-bottom mt-4 pt-3 border-top d-flex justify-content-between flex-wrap gap-2">
-                <p>&copy; 2026 Srikrishna GVK Enterprises · vkinnovativetechnologies.com. All rights reserved.</p>
-                <p class="m-0">
-                    Built with Passion - <span class="text-info fw-semibold">Firmware · PCB Design · Embedded C ·
-                        IoT</span>
-                </p>
+            <div class="col-6 col-lg-2">
+                <div class="footer-title">Navigate</div>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#categories">Industrial</a></li>
+                    <li><a href="#projects">Products</a></li>
+                    <li><a href="#projects">Resources</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>   
+            </div>
+
+            <div class="col-6 col-lg-2">
+                <div class="footer-title">Categories</div>
+                <ul class="footer-links">
+                    <li><a href="#categories">Hardware</a></li>
+                    <li><a href="#categories">Embedded</a></li>
+                    <li><a href="#categories">Semiconductor</a></li>
+                    <li><a href="#categories">IOT</a></li>
+                    <li><a href="#categories">Project support</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="footer-title">Stay Updated</div>
+                <p class="footer-newsletter-text">Get new project drops and tutorials in your inbox.</p>
+                
+                <div id="newsletterAlert" class="alert d-none py-1 px-2 mb-2" style="font-size: 13px;"></div>
+                
+                <form onsubmit="handleSubscription(event)" class="d-flex gap-2">
+                    <input type="email" id="newsletterEmail" class="form-control" placeholder="your@email.com" required />
+                    <button type="submit" id="subscribeBtn" class="btn btn-glow px-3">
+                        <i class="fas fa-arrow-right" id="subscribeIcon"></i>
+                    </button>
+                </form>
             </div>
 
         </div>
-    </footer>
+
+        <div class="footer-bottom mt-4 pt-3 border-top d-flex justify-content-between flex-wrap gap-2">
+            <p>&copy; 2026 Srikrishna GVK Enterprises · vkinnovativetechnologies.com. All rights reserved.</p>
+            <p class="m-0">
+                Built with Passion - <span class="text-info fw-semibold">Firmware · PCB Design · Embedded C · IoT</span>
+            </p>
+        </div>
+
+    </div>
+</footer>
 
 
     <!-- Scroll to Top -->
@@ -491,137 +545,242 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="JavaScript.js"></script>
-     <script>
- 
-        /* ── CONFIG ──────────────────────────────────────────────────────
-           WhatsApp Target Number Configuration (Country Code + Number)
-        ────────────────────────────────────────────────────────────────── */
-        const WHATSAPP_PHONE = "916281938249";
- 
-        /* ── HELPERS ─────────────────────────────────────────────────── */
-        const el = (id) => document.getElementById(id);
- 
-        function clearErrors() {
-            ["contactName", "contactEmail", "contactTopic", "contactMessage"].forEach(id => {
-                el(id).classList.remove("is-invalid");
-            });
-            ["err-name", "err-email", "err-topic", "err-message"].forEach(id => {
-                const e = el(id);
-                if (e) e.textContent = "";
-            });
-            el("formAlert").className = "alert d-none mb-3";
-            el("formAlert").textContent = "";
+    <script>
+
+    /* ── CONFIG ──────────────────────────────────────────────────────
+        WhatsApp Target Number Configuration (Country Code + Number)
+    ────────────────────────────────────────────────────────────────── */
+    const WHATSAPP_PHONE = "916281938249";
+
+    /* ── HELPERS ─────────────────────────────────────────────────── */
+    const el = (id) => document.getElementById(id);
+
+    function clearErrors() {
+        ["contactName", "contactEmail", "contactTopic", "contactMessage"].forEach(id => {
+            const input = el(id);
+            if(input) input.classList.remove("is-invalid");
+        });
+        ["err-name", "err-email", "err-topic", "err-message"].forEach(id => {
+            const e = el(id);
+            if (e) e.textContent = "";
+        });
+        const alertBox = el("formAlert");
+        if(alertBox) {
+            alertBox.className = "alert d-none mb-3";
+            alertBox.textContent = "";
         }
- 
-        function showFieldError(field, msg) {
-            const map = {
-                name:    "contactName",
-                email:   "contactEmail",
-                topic:   "contactTopic",
-                message: "contactMessage"
-            };
-            const input = el(map[field]);
-            if (input) {
-                input.classList.add("is-invalid");
-                const errEl = el("err-" + field);
-                if (errEl) errEl.textContent = msg;
-            }
+    }
+
+    function showFieldError(field, msg) {
+        const map = {
+            name:    "contactName",
+            email:   "contactEmail",
+            topic:   "contactTopic",
+            message: "contactMessage"
+        };
+        const input = el(map[field]);
+        if (input) {
+            input.classList.add("is-invalid");
+            const errEl = el("err-" + field);
+            if (errEl) errEl.textContent = msg;
         }
- 
-        function showAlert(type, text) {
-            const a = el("formAlert");
+    }
+
+    function showAlert(type, text) {
+        const a = el("formAlert");
+        if(a) {
             a.className = `alert alert-${type} mb-3`;
             a.textContent = text;
         }
- 
-        function setLoading(loading) {
-            const btn  = el("sendBtn");
-            const text = el("sendBtnText");
-            btn.disabled = loading;
-            text.innerHTML = loading
-                ? '<span class="btn-spinner"></span>Opening WhatsApp…'
-                : '<i class="fas fa-paper-plane me-2"></i>Send Message';
-        }
- 
-        /* ── CLIENT-SIDE VALIDATION ──────────────────────────────────── */
-        function validateLocally(data) {
-            const errors = {};
-            if (!data.name || data.name.trim().length < 2)
-                errors.name = "Please enter your full name (min 2 characters).";
-            if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
-                errors.email = "Please enter a valid email address.";
-            if (!data.topic)
-                errors.topic = "Please select a topic.";
-            if (!data.message || data.message.trim().length < 10)
-                errors.message = "Message must be at least 10 characters.";
-            return errors;
-        }
- 
-        /* ── MAIN SUBMIT ─────────────────────────────────────────────── */
-        function submitForm() {
-            clearErrors();
- 
-            // 1. Collect
-            const data = {
-                name:    el("contactName").value.trim(),
-                email:   el("contactEmail").value.trim(),
-                topic:   el("contactTopic").value,
-                message: el("contactMessage").value.trim()
-            };
- 
-            // 2. Client-side validation
-            const localErrors = validateLocally(data);
-            if (Object.keys(localErrors).length > 0) {
-                Object.entries(localErrors).forEach(([f, m]) => showFieldError(f, m));
-                showAlert("danger", "⚠️ Please fix the highlighted fields before sending.");
-                return;
-            }
- 
-            // 3. Generate WhatsApp Link Front-end Only
-            setLoading(true);
-            try {
-                // Build the text formatting structure locally matching your original server design
-                const rawMessage = 
-                    `🔔 *New Quote Request*\n` +
-                    `━━━━━━━━━━━━━━━━━━━━━━\n` +
-                    `👤 *Name:*  ${data.name}\n` +
-                    `📧 *Email:* ${data.email}\n` +
-                    `📌 *Topic:* ${data.topic}\n` +
-                    `━━━━━━━━━━━━━━━━━━━━━━\n` +
-                    `💬 *Message:*\n${data.message}\n` +
-                    `━━━━━━━━━━━━━━━━━━━━━━`;
+    }
 
-                const encodedMessage = encodeURIComponent(rawMessage);
-                const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodedMessage}`;
- 
-                // ✅ Open WhatsApp
-                showAlert("success", "✅ Opening WhatsApp with your message…");
-                
-                setTimeout(() => {
-                    window.open(whatsappUrl, "_blank");
-                    setLoading(false);
-                    
-                    // Reset form fields
-                    el("contactName").value    = "";
-                    el("contactEmail").value   = "";
-                    el("contactTopic").value   = "";
-                    el("contactMessage").value = "";
-                }, 700);
-                
-            } catch (err) {
-                console.error("Redirection Error:", err);
-                showAlert("danger", "⚠️ Something went wrong trying to open WhatsApp. Please try again.");
-                setLoading(false);
-            }
+    function setLoading(loading) {
+        const btn  = el("sendBtn");
+        const text = el("sendBtnText");
+        if(!btn || !text) return;
+        
+        btn.disabled = loading;
+        text.innerHTML = loading
+            ? '<span class="btn-spinner"></span>Opening WhatsApp…'
+            : '<i class="fas fa-paper-plane me-2"></i>Send Message';
+    }
+
+    /* ── CLIENT-SIDE VALIDATION ──────────────────────────────────── */
+    function validateLocally(data) {
+        const errors = {};
+        if (!data.name || data.name.trim().length < 2)
+            errors.name = "Please enter your full name (min 2 characters).";
+        if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
+            errors.email = "Please enter a valid email address.";
+        if (!data.topic)
+            errors.topic = "Please select a topic.";
+        if (!data.message || data.message.trim().length < 10)
+            errors.message = "Message must be at least 10 characters.";
+        return errors;
+    }
+
+    /* ── MAIN SUBMIT ─────────────────────────────────────────────── */
+    function submitForm() {
+        clearErrors();
+
+        // 1. Collect Form Values Safely
+        const data = {
+            name:    el("contactName") ? el("contactName").value.trim() : "Email Link User",
+            email:   el("contactEmail") ? el("contactEmail").value.trim() : "info@vkinnovativetechnologies.in",
+            topic:   el("contactTopic") ? el("contactTopic").value : "General Inquiry",
+            message: el("contactMessage") ? el("contactMessage").value.trim() : "Hello, I clicked your email link to request a quote!"
+        };
+
+        // 2. Client-side validation
+        const localErrors = validateLocally(data);
+        if (Object.keys(localErrors).length > 0) {
+            Object.entries(localErrors).forEach(([f, m]) => showFieldError(f, m));
+            showAlert("danger", "⚠️ Please fill out or correct the input boxes before sending.");
+            return;
         }
- 
-        /* ── Ctrl + Enter to submit ──────────────────────────────────── */
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Enter" && e.ctrlKey) submitForm();
-        });
- 
-    </script>
-   
+
+        // 3. Generate WhatsApp Link
+        setLoading(true);
+        try {
+            const rawMessage = 
+                `🔔 *New Quote Request*\n` +
+                `━━━━━━━━━━━━━━━━━━━━━━\n` +
+                `👤 *Name:* ${data.name}\n` +
+                `📧 *Email:* ${data.email}\n` +
+                `📌 *Topic:* ${data.topic}\n` +
+                `━━━━━━━━━━━━━━━━━━━━━━\n` +
+                `💬 *Message:*\n${data.message}\n` +
+                `━━━━━━━━━━━━━━━━━━━━━━`;
+
+            const encodedMessage = encodeURIComponent(rawMessage);
+            const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodedMessage}`;
+
+            // ✅ Open WhatsApp Link
+            showAlert("success", "✅ Opening WhatsApp with your message…");
+            
+            setTimeout(() => {
+                window.open(whatsappUrl, "_blank");
+                setLoading(false);
+                
+                // Reset form fields safely
+                if(el("contactName")) el("contactName").value = "";
+                if(el("contactEmail")) el("contactEmail").value = "";
+                if(el("contactTopic")) el("contactTopic").value = "";
+                if(el("contactMessage")) el("contactMessage").value = "";
+            }, 700);
+            
+        } catch (err) {
+            console.error("Redirection Error:", err);
+            showAlert("danger", "⚠️ Something went wrong trying to open WhatsApp. Please try again.");
+            setLoading(false);
+        }
+    }
+
+    /* ── FOOTER INTERACTION ROUTER ─────────────────────────────────── */
+    document.addEventListener("DOMContentLoaded", () => {
+        const footerEmailBtn = el("footerEmailBtn");
+        
+        if (footerEmailBtn) {
+            footerEmailBtn.addEventListener("click", () => {
+                // Fetch values from your existing input components 
+                const nameInput = el("contactName");
+                const emailInput = el("contactEmail");
+                const topicInput = el("contactTopic");
+                const msgInput = el("contactMessage");
+
+                // Auto-fill form inputs if they are currently blank
+                if (nameInput && !nameInput.value.trim()) nameInput.value = "Customer Support Request";
+                if (emailInput && !emailInput.value.trim()) emailInput.value = "info@vkinnovativetechnologies.in";
+                if (topicInput && !topicInput.value) topicInput.value = "General Inquiry"; 
+                if (msgInput && !msgInput.value.trim()) {
+                    msgInput.value = "Hello VK Innovative team, I am tracking details from your portal. Please share product info.";
+                }
+
+                // Fire WhatsApp redirection chain instantly
+                submitForm();
+            });
+        }
+    });
+
+    /* ── Ctrl + Enter to submit ──────────────────────────────────── */
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && e.ctrlKey) submitForm();
+    });
+
+/* ── NEWSLETTER SUBSCRIPTION ROUTINE ─────────────────────────────────────── */
+function handleSubscription(event) {
+    // Prevent default browser page reloading behavior
+    event.preventDefault();
+    
+    const emailInput = document.getElementById("newsletterEmail");
+    const alertBox = document.getElementById("newsletterAlert");
+    const submitBtn = document.getElementById("subscribeBtn");
+    const submitIcon = document.getElementById("subscribeIcon");
+    
+    if (!emailInput || !emailInput.value.trim()) return;
+    
+    const emailAddress = emailInput.value.trim();
+    
+    // Basic structural email verification check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailAddress)) {
+        if (alertBox) {
+            alertBox.className = "alert alert-danger py-2 px-3 mb-3";
+            alertBox.textContent = "⚠️ Please provide a valid email address structure.";
+        }
+        return;
+    }
+
+    // Visual loading response state configuration
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = "0.7";
+    if (submitIcon) submitIcon.className = "fas fa-spinner fa-spin";
+
+    try {
+        // Formulates a matching layout configuration text segment for your WhatsApp operator
+        const updateMessage = 
+            `📢 *New Newsletter Subscription*\n` +
+            `━━━━━━━━━━━━━━━━━━━━━━\n` +
+            `📧 *Email:* ${emailAddress}\n` +
+            `📌 *Action:* Requesting project drops & tutorial notifications\n` +
+            `━━━━━━━━━━━━━━━━━━━━━━`;
+
+        const encodedSubscription = encodeURIComponent(updateMessage);
+        
+        // Relies on your existing global static WHATSAPP_PHONE parameter string configuration
+        const targetPhone = typeof WHATSAPP_PHONE !== 'undefined' ? WHATSAPP_PHONE : "916281938249";
+        const redirectUrl = `https://wa.me/${targetPhone}?text=${encodedSubscription}`;
+
+        if (alertBox) {
+            alertBox.className = "alert alert-success py-2 px-3 mb-3";
+            alertBox.textContent = "✅ Forwarding email registration profile via WhatsApp...";
+        }
+
+        // Launches WhatsApp tab interface window link 
+        setTimeout(() => {
+            window.open(redirectUrl, "_blank");
+            
+            // Clean interface configurations back to standard baselines
+            emailInput.value = "";
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1.0";
+            if (submitIcon) submitIcon.className = "fas fa-arrow-right";
+            if (alertBox) alertBox.className = "alert d-none py-2 px-3 mb-3";
+        }, 800);
+
+    } catch (error) {
+        console.error("Subscription Execution Failure:", error);
+        if (alertBox) {
+            alertBox.className = "alert alert-danger py-2 px-3 mb-3";
+            alertBox.textContent = "⚠️ An interface routing error occurred. Please refresh and retry.";
+        }
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = "1.0";
+        if (submitIcon) submitIcon.className = "fas fa-arrow-right";
+    }
+}
+</script>
+
  
 </body>
 

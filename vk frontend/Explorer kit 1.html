@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Home Automation - Product Details</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #101036; /* Dark blue background matching your logo */
@@ -52,18 +58,19 @@
         ul {
             padding-left: 20px;
         }
-        /* Product Image Styling */
+        /* Product Image Styling - Ensures full screen/container width */
         .product-image-box {
             width: 100%;
-            margin: 25px 0;
+            margin-bottom: 25px;
             text-align: center;
         }
         .product-image {
-            max-width: 100%;
+            width: 100%;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             border: 1px solid rgba(255,255,255,0.1);
+            display: block;
         }
         /* Manual Section Box */
         .manual-section {
@@ -125,64 +132,16 @@
 <body>
 
     <div class="product-container">
-        <!-- Header -->
-        <div class="product-header">
-            <div class="product-icon">🔌</div>
-            <div>
-                <h1>Smart Home Automation</h1>
-                <p style="margin: 5px 0 0 0; color: #a5a5d9;">Model: VK-SH-01 | IoT Hardware Series</p>
-            </div>
-        </div>
-
-        <!-- Description -->
-        <h2>Overview</h2>
-        <p>This complete hardware automation kit lets you manage your home appliances directly from your smartphone. Built on a custom stable PCB board, the system interfaces with a high-speed Wi-Fi module to ensure zero lag. It features multi-channel configurations and on-board status LEDs to keep track of live electrical lines instantly.</p>
-
-        <!-- Technical Specifications -->
-        <h2>Technical Specifications</h2>
-        <ul>
-            <li><strong>Input Voltage:</strong> 110V - 240V AC (50/60 Hz)</li>
-            <li><strong>Channels:</strong> 4-Channel isolated relay setup</li>
-            <li><strong>Connectivity:</strong> 2.4GHz Wi-Fi network module</li>
-            <li><strong>Safety Features:</strong> Built-in optocoupler isolation & fuse protection</li>
-            <li><strong>PCB Quality:</strong> Double-sided FR4 industrial grade glass fiber</li>
-        </ul>
-
-        <!-- Product Image Section (Before the Manual) -->
-        <h2>Product Preview</h2>
+        
         <div class="product-image-box">
-            <!-- Replace "product-photo.jpg" with your actual image path -->
-            <img src="product-photo.jpg" alt="Smart Home Automation Hardware Board" class="product-image">
+            <img src="./project kit list.png" alt="Project Kit List" class="product-image">
         </div>
 
-        <!-- User Manual & Installation Guide -->
-        <h2>User Manual & Installation Guide</h2>
-        <div class="manual-section">
-            <p style="margin-top: 0; font-weight: bold; color: #ffffff;">⚠️ Safety Warning: Turn off your main power supply switch before starting the installation process.</p>
-            
-            <div class="manual-step">
-                <span class="step-title">Step 1: Powering the Board</span>
-                <p style="margin: 5px 0 0 0;">Connect your 5V/12V DC power adapter input to the dedicated power terminal pins on the board layout.</p>
-            </div>
-            
-            <div class="manual-step">
-                <span class="step-title">Step 2: Load Connections</span>
-                <p style="margin: 5px 0 0 0;">Wire your home appliances (like lights or fans) to the Relay output terminals. Connect the live line through the Common (COM) and Normally Open (NO) ports.</p>
-            </div>
-            
-            <div class="manual-step">
-                <span class="step-title">Step 3: App Configuration</span>
-                <p style="margin: 5px 0 0 0;">Turn on your smartphone's Wi-Fi settings. Open your companion application, scan for the hardware hotspot, and type in your local Wi-Fi credentials to link the unit.</p>
-            </div>
-        </div>
-
-        <!-- Scroll down to find buttons -->
         <div class="button-group">
-            <!-- Back button links to index page -->
-            <a href="html.html" class="btn-back">Go Back</a>
-            <!-- Buy Now button at the absolute bottom -->
-            <a href="#" class="btn-buy">Buy Now</a>
+            <a href="index.html" class="btn-back">Go Back</a>
+            <a href="index.html#contact" class="btn-buy">Contact us to Buy Now</a>
         </div>
+
     </div>
 
 </body>
