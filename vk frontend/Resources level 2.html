@@ -3,161 +3,219 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <title>VK Innovative Technologies</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css.css" />
 
     <style>
-        
-   /* ── Lightbox Overlay ── */
+        /* ── Lightbox Overlay ── */
         #lightbox {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.88);
-            z-index: 9999;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 99999;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            animation: fadeIn 0.2s ease;
+            touch-action: none;
         }
- 
+
         #lightbox.open {
-            display: flex;
+            display: flex !important;
         }
- 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-        }
- 
+
         #lightbox-inner {
             position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
-            animation: popIn 0.25s ease;
+            width: 100%;
+            max-width: 500px;
+            /* Default mobile safe limit */
             display: flex;
             flex-direction: column;
             align-items: center;
         }
- 
-        @keyframes popIn {
-            from { transform: scale(0.88); opacity: 0; }
-            to   { transform: scale(1);   opacity: 1; }
+
+        /* ── Image viewport block ── */
+        .lightbox-img-container {
+            width: 100%;
+            height: 55vh;
+            /* Default mobile height */
+            overflow: hidden;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000000;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
         }
- 
+
         #lightbox-img {
             display: block;
-            max-width: 100%;
-            max-height: 75vh;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            max-width: 100% !important;
+            max-height: 100% !important;
+            width: auto !important;
+            height: auto !important;
             object-fit: contain;
-            transition: opacity 0.2s ease;
+            touch-action: none;
+            user-select: none;
+            -webkit-user-drag: none;
+
+            /* Hardware Acceleration Variables */
+            transform: translate3d(var(--zoom-x, 0px), var(--zoom-y, 0px), 0px) scale(var(--zoom-scale, 1)) !important;
+            transform-origin: center center;
+            will-change: transform;
+            transition: transform 0.05s linear;
         }
- 
+
         #lightbox-caption {
             text-align: center;
-            color: #ddd;
-            margin-top: 12px;
-            font-size: 15px;
+            color: #ffffff;
+            margin-top: 15px;
+            font-size: 16px;
             font-weight: 600;
+            padding: 0 10px;
         }
- 
-        /* ── Photo counter dots ── */
+
+        /* ── Navigation Components ── */
         #lightbox-dots {
             display: flex;
-            gap: 8px;
-            margin-top: 10px;
+            gap: 10px;
+            margin-top: 12px;
             justify-content: center;
         }
- 
+
         .lb-dot {
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.35);
+            background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
             transition: background 0.2s;
         }
- 
+
         .lb-dot.active {
-            background: #fff;
+            background: #00d4ff;
         }
- 
-        /* ── Nav arrows ── */
+
         .lb-arrow {
             position: fixed;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.12);
             border: none;
             color: #fff;
-            font-size: 26px;
-            width: 48px;
-            height: 48px;
+            font-size: 36px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.2s;
-            z-index: 10001;
+            z-index: 100001;
+            transition: background 0.2s, transform 0.2s;
         }
- 
+
         .lb-arrow:hover {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.25);
         }
- 
-        #lb-prev { left: 16px; }
-        #lb-next { right: 16px; }
- 
-        .lb-arrow.hidden { display: none; }
- 
-        /* ── Close button ── */
+
+        #lb-prev {
+            left: 20px;
+        }
+
+        #lb-next {
+            right: 20px;
+        }
+
+        .lb-arrow.hidden {
+            display: none !important;
+        }
+
+        /* Close Button Positioning */
         #lightbox-close {
             position: absolute;
-            top: -16px;
-            right: -16px;
-            background: #fff;
+            top: -50px;
+            right: 0px;
+            background: #ffffff;
             border: none;
             border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            font-size: 18px;
-            cursor: pointer;
+            width: 38px;
+            height: 38px;
+            font-size: 16px;
+            color: #000;
+            font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-            transition: background 0.15s;
-            z-index: 10000;
+            z-index: 100005;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
         }
- 
-        #lightbox-close:hover { background: #ffe0e0; }
- 
-        /* ── Photo count label ── */
+
+        #lightbox-close:hover {
+            background: #ffebeb;
+        }
+
         #lightbox-counter {
-            color: rgba(255,255,255,0.55);
+            color: rgba(255, 255, 255, 0.5);
             font-size: 13px;
-            margin-top: 6px;
+            margin-top: 4px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+       DESKTOP RESPONSIVE LAYOUT ENGINE (Fixes Small Image Bug)
+       ═══════════════════════════════════════════════════════════ */
+        @media (min-width: 768px) {
+            #lightbox-inner {
+                max-width: 85vw;
+                /* Expands width dynamically on big screens */
+            }
+
+            .lightbox-img-container {
+                height: 75vh;
+                /* Gives the image container maximum breathing room */
+            }
+
+            #lightbox-close {
+                top: 0px;
+                right: -55px;
+                /* Moves close button comfortably to the side of the photo on desktop */
+            }
+        }
+
+        /* Mobile specific adjustments for compact layout space */
+        @media (max-width: 767px) {
+            .lightbox-img-container {
+                height: 50vh;
+            }
+
+            .lb-arrow {
+                position: absolute;
+                top: unset;
+                bottom: -65px;
+                transform: none;
+            }
+
+            #lb-prev {
+                left: calc(50% - 60px);
+            }
+
+            #lb-next {
+                right: calc(50% - 60px);
+            }
         }
     </style>
-    
 </head>
 
 <body>
 
-    <!-- ── Navbar ── -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#home">
-                <img src="orginal.png" alt="VK Innovative Technologies" class="navbar-logo" />
+                <img src="logo.png" alt="VK Innovative Technologies" class="navbar-logo" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
@@ -165,410 +223,614 @@
             <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
                     <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="Resources level 2.html">➡️Level-2</a></li> -->
                     <li class="nav-item"><a class="nav-link" href="index.html#footer">Help</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- ── Projects Explorer Level-1 Kit ── -->
     <section id="categories">
         <div class="container">
             <div class="section-label">What We Cover</div>
             <h2 class="section-title">Vk Innovative Technologies</h2>
             <h3 style="color: #4e97d6;"><b>Explorer Level-2 kit - Projects</b></h3>
-            <p class="section-sub">From physical circuits to web interfaces — explore every layer of the technology stack.</p>
+            <p class="section-sub">From physical circuits to web interfaces — explore every layer of the technology
+                stack.</p>
 
-            <div class="row g-6">
-
-                <!-- Project 1 -->
+            <div class="row g-4">
                 <div class="col-sm-6 col-lg-4">
                     <a href="javascript:void(0)" class="cat-card"
-                        onclick="showProjectPhoto('project1.png', 'Project 1 – Blinking LED')">
-                        <div class="cat-icon bg-orange">
-                            <i class="fas fa-lightbulb c-orange"></i>
-                        </div>
-                        <h5>Project 1 Blinking LED</h5>
-                        <p>An LED project line is a series of light-emitting diodes wired together
-                            in a straight row to create a bright strip, bar, or chasing light effect.</p>
+                        onclick="showProjectPhoto(['Resources kit 2 images/project1.png','Resources kit 2 images/project1code1.png','Resources kit 2 images/project1code2.png'], 'Project 1 Bluetooth LED Control'); return false;">
+                        <div class="cat-icon bg-primary"><i class="fab fa-bluetooth c-white"></i></div>
+                        <h5>Project 1 Bluetooth LED Control</h5>
+                        <p>A smart system to wirelessly turn an LED light on and off using a smartphone app and
+                            Bluetooth.</p>
                     </a>
                 </div>
 
-                <!-- Project 2 -->
+
                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project2.png', 'Project 2 – Traffic light System')">
-                        <div class="cat-icon bg-cyan"><i class="fas fa-ellipsis-v c-cyan"></i></div>
-                        <h5>Projects 2 Traffic light systems </h5>
-                        <p>A traffic light system uses sequential timing loops to control red, yellow, and green LEDs, mimicking real-world intersection signal patterns.</p>
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project2.png','Resources kit 2 images/project2code1.png','Resources kit 2 images/project2code1.png'], 'Project 2 – Bluetooth RGB LED Control'); return false;">
+                        <div class="cat-icon bg-cyan"><i class="fas fa-palette c-cyan"></i></div>
+                        <h5>Project 2 – Bluetooth RGB LED Control</h5>
+                        <p>A wireless color mixing system that lets you choose custom colors on an RGB LED using a
+                            smartphone app.</p>
                     </a>
                 </div>
 
-                <!-- Project 3 -->
                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project3.png', 'Project 3 – push button Led control')">
-                        <div class="cat-icon bg-green"><i class="fas fa-hand-pointer c-green"></i></div>
-                        <h5>Project 3 Push Button LED Control </h5>
-                        <p>A manual control setup that registers physical tactile switch inputs to complete circuit paths, toggling the operational state of a connected LED indicator.</p>
-
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project3.png','Resources kit 2 images/project3code1.png','Resources kit 2 images/project3code2.png'], 'Project 3 Bluetooth Relay Control'); return false;">
+                        <div class="cat-icon bg-green"><i class="fas fa-toggle-on c-green"></i></div>
+                        <h5>Project 3 Bluetooth Relay Control</h5>
+                        <p>A smart automation setup that uses smartphone Bluetooth signals to trigger heavy-duty relays
+                            and appliances.</p>
                     </a>
                 </div>
 
-                <!-- Semiconductor -->
                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project4.png', 'Project 4 – Multiple LED Sequence')">
-                        <div class="cat-icon bg-purple"><i class="fas fa-charging-station c-purple"></i></div>
-                        <h5>Project 4 – Multiple LED Sequence</h5>
-                        <p>The project line for this project is: "An automated warning system that uses an Arduino to trigger a loud, pulsing beep when a hazard is detected</p>
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project4.png','Resources kit 2 images/project4code1.png','Resources kit 2 images/project4code2.png'], 'Project 4 – Bluetooth Tempature Humidity Monitor'); return false;">
+                        <div class="cat-icon bg-purple"><i class="fas fa-thermometer-half c-purple"></i></div>
+                        <h5>Project 4 – Bluetooth Tempature Humidity Monitor</h5>
+                        <p>A smart environment monitor that reads and sends real-time atmospheric data directly to your
+                            phone via Bluetooth.</p>
                     </a>
                 </div>
 
-                <!-- IOT -->
                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project5.png', 'Project 5 – Active Buzzer Alert')">
-                        <div class="cat-icon bg-pink"><i class="fas fa-bell c-pink"></i></div>
-                        <h5>Project 5 – Active Buzzer Alert</h5>
-                        <p>This title perfectly connects your active buzzer alarm project with the geographic location mapping features from Font Awesome and Bootstrap</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project6.png', 'Project 6 – Rgb LED Color Mixing')">
-                        <div class="cat-icon bg-purple"><i class="fas fa-paint-brush c-purple"></i></div>
-                        <h5>Project 6 – Rgb LED Color Mixing</h5>
-                        <p>The project line for this project is: "A web-controlled color station that uses a Bootstrap interface to mix red, green, and blue light waves</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project7.png', 'Project 7 – Potentiometer Reading Monitor')">
-                        <div class="cat-icon bg-blue"><i class="fas fa-tachometer-alt c-blue"></i></div>
-                        <h5>Project 7 – Potentiometer Reading Monitor</h5>
-                        <p>Analog-to-digital data stream conversion, hardware voltage division, real-time signal calibration, and serial plotting physics.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project8.png', 'Project 8 – PWM Led Brightness Control')">
-                        <div class="cat-icon bg-green"><i class="fas fa-hand-pointer c-green"></i></div>
-                        <h5>Project 8 – PWM Led Brightness Control </h5>
-                        <p>A web-based dimming station that uses pulse-width modulation to smoothly control physical LED brightness levels.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project9.png', 'Project 9 – LDR Light Level Monitor')">
-                        <div class="cat-icon bg-teal"><i class="fas fa-sun c-teal"></i></div>
-                        <h5>Project 9 – LDR Light Level Monitor</h5>
-                        <p>Measures ambient light levels using a photoresistor to control automated circuit responses."</p>
-
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project10.png', 'Project 10 – Automatic Night Lamp')">
-                        <div class="cat-icon bg-cyan   "><i class="fas fa-moon c-cyan   "></i></div>
-                        <h5>Project 10 – Automatic Night Lamp</h5>
-                        <p>Automatically turns on an LED lamp when darkness is detected by a built-in sensor.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project11.png', 'Project 11 –  Temperature Monitor using LM35 sensor')">
-                        <div class="cat-icon bg-peach     "><i class="fas fa-thermometer-half c-peach     "></i></div>
-                        <h5>Project 11 – Temperature Monitor using LM35 sensor</h5>
-                        <p>Tracks and displays real-time ambient temperature levels using a high-precision analog sensor..</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project12.png', 'Project 12 –  Fire Detection Alarm')">
-                        <div class="cat-icon bg-pink"><i class="fas fa-fire c-pink"></i></div>
-                        <h5>Project 12 –  Fire Detection Alarm</h5>
-                        <p>Senses sudden heat or flames to trigger a loud buzzer and alert users of danger.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project13.png', 'Project 13 –  IR Obstacle Detection System')">
-                        <div class="cat-icon bg-bronze "><i class="fas fa-microchip c-bronze "></i></div>
-                        <h5>Project 13 – Temperature Monitor using LM35 sensor</h5>
-                        <p>Uses infrared light beams to spot nearby objects and avoid physical collisions.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project14.png', 'Project 14 –  Touch Sensor LED Control')">
-                        <div class="cat-icon bg-orange"><i class="fas fa-fingerprint c-orange"></i></div>
-                        <h5>Project 14 –  Touch Sensor LED Control</h5>
-                        <p>Detects human touch on a capacitive pad to seamlessly turn a connected LED on and off.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project15.png', 'Project 15 –  Sound Activated Light ')">
-                        <div class="cat-icon bg-purple"><i class="fas fa-microphone c-purple"></i></div>
-                        <h5>Project 15 –  Sound Activated Light</h5>
-                        <p>Uses a microphone module to detect loud noises like claps and toggles a light bulb.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project16.png', 'Project 16 –  Ultrasonic Distance Measurement')">
-                        <div class="cat-icon bg-green"><i class="fas fa-ruler-horizontal c-green"></i></div>
-                        <h5>Project 16 –  Ultrasonic Distance Measurement</h5>
-                        <p>Emits high-frequency sound waves to calculate and display the exact distance of an object.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto(['project17.png','projectcode17.png'], 'Project 17 –  LCD 16x2 Display Basics')">
-                        <div class="cat-icon bg-green"><i class="fas fa-desktop c-blue"></i></div>
-                        <h5>Project 17 –  LCD 16x2 Display Basics</h5>
-                        <p>Interfaces a 16x2 character LCD screen to display custom text messages, scroll strings, and system data outputs.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project18.png', 'Project 18 –  LCD Scrolling Text Display')">
-                        <div class="cat-icon bg-green"><i class="fas fa-align-left c-purple"></i></div>
-                        <h5>Project 18 –  LCD Scrolling Text Display</h5>
-                        <p>Configures a 16x2 character display to move and scroll long text strings across the screen smoothly.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project19.png', 'Project 19 –  LCD Temperature Monitor ')">
-                        <div class="cat-icon bg-green"><i class="fas fa-thermometer-half c-orange"></i></div>
-                        <h5>Project 19 – LCD Temperature Monitor</h5>
-                        <p>Tracks and displays real-time ambient temperature levels on a 16x2 screen using a high-precision analog sensor.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project20.png', 'Project 20 –  LCD Distance Meter')">
-                        <div class="cat-icon bg-green"><i class="fas fa-ruler-horizontal c-blue"></i></div>
-                        <h5>Project 20 –  LCD Distance Meter</h5>
-                        <p>Measures physical distance using an ultrasonic sensor and displays the real-time readings on an LCD screen.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project21.png', 'Project 21 –  LCD Digital Counter')">
-                        <div class="cat-icon bg-green"><i class="fas fa-sort-numeric-down c-purple"></i></div>
-                        <h5>Project 21 –  LCD Digital Counter</h5>
-                        <p>Counts and tracks sequential events or inputs, displaying the real-time digital tally on an LCD screen.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project22.png', 'Project 22 –  LCD Digital Clock simulation')">
-                        <div class="cat-icon bg-green"><i class="fas fa-clock c-red"></i></div>
-                        <h5>Project 22 –  LCD Digital Clock simulation</h5>
-                        <p>Simulates a real-time digital clock tracking hours, minutes, and seconds on an LCD interface screen.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto(['project23.png','projectcode23.png'], 'Project 23 –  Oled Display Basics')">
-                        <div class="cat-icon bg-green"><i class="fas fa-tablet-alt c-orange"></i></div>
-                        <h5>Project 23 –  Oled Display Basics</h5>
-                        <p>Interfaces a high-resolution OLED screen to display custom graphics, sharp text, and visual UI elements.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project24.png', 'Project 24 –  Oled Sensor Dashboard')">
-                        <div class="cat-icon bg-green"><i class="fas fa-chart-line c-blue"></i></div>
-                        <h5>Project 24 –  Oled Sensor Dashboard</h5>
-                        <p>Combines multiple hardware sensor readings onto a single OLED graphical screen to create a real-time tracking panel.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project25.png', 'Project 25 –  Oled Live Data Monitor')">
-                        <div class="cat-icon bg-green"><i class="fas fa-broadcast-tower c-purple"></i></div>
-                        <h5>Project 25 –  Oled Live Data Monitor</h5>
-                        <p>Monitors continuous live telemetry streams and displays real-time system diagnostics on a sharp OLED screen.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project26.png', 'Project 26 –  Oled Smart Information Display')">
-                        <div class="cat-icon bg-green"><i class="fas fa-info-circle c-orange"></i></div>
-                        <h5>Project 26 –  Oled Smart Information Display</h5>
-                        <p>Displays smart alerts, notification strings, and dynamic text menus using an interactive OLED screen interface.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project27.png', 'Project 27 –  Servo Motor Sweep')">
-                        <div class="cat-icon bg-green"><i class="fas fa-sync c-blue c-blue"></i></div>
-                        <h5>Project 27 –  Servo Motor Sweep</h5>
-                        <p>Controls a servo motor to automatically rotate back and forth smoothly between 0 and 180 degrees.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project28.png', 'Project 28 –  Servo Position Control Using Potentiometer')">
-                        <div class="cat-icon bg-green"><i class="fas fa-tachometer-alt c-purple"></i></div>
-                        <h5>'Project 28 –  Servo Position Control Using Potentiometer'</h5>
-                        <p>Maps analog voltage signals from a potentiometer knob to precisely control the rotational position of a servo motor.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project29.png', 'Project 29 –  Ultrasonic Controlled Servo Barrier')">
-                        <div class="cat-icon bg-green"><i class="fas fa-shield-alt c-orange"></i></div>
-                        <h5>Project 29 –  Ultrasonic Controlled Servo Barrier</h5>
-                        <p>Uses ultrasonic distance tracking to automatically lift or lower a servo-powered security gate barrier when an object approaches</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project30.png', 'Project 30 –  Touch Controlled Servo System')">
-                        <div class="cat-icon bg-green"><i class="fas fa-hand-pointer c-blue"></i></div>
-                        <h5>Project 30 –  Touch Controlled Servo System</h5>
-                        <p>Uses digital touch sensor inputs to trigger precise rotational angle shifts in a servo motor system.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project31.png', 'Project 31 –  Smart Distance Controlled Servo')">
-                        <div class="cat-icon bg-green"><i class="fas fa-expand-arrows-alt c-purple"></i></div>
-                        <h5>Project 31 –  Smart Distance Controlled Servo</h5>
-                        <p>Uses ultrasonic radar data to automatically adjust and control the rotational angle of a servo motor in real time.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project32.png', 'Project 32 –  complete Temperature Monitoring station')">
-                        <div class="cat-icon bg-orange"><i class="fas fa-thermometer-half c-orange"></i></div>
-                        <h5>Project 32 –  complete Temperature Monitoring station</h5>
-                        <p>Gathers, monitors, and logs real-time environmental data to build an independent ambient temperature monitoring station.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project33.png', 'Project 33 –  Smart Light Monitoring station')">
-                        <div class="cat-icon bg-orange"><i class="fas fa-sun c-orange"></i></div>
-                        <h5>Project 33 –  Smart Light Monitoring station</h5>
-                        <p>Measures ambient light intensity using photoresistors to track and monitor illumination levels in real time.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project34.png', 'Project 34 –  Smart Distance Monitoring station')">
-                        <div class="cat-icon bg-blue"><i class="fas fa-ruler-horizontal c-blue"></i></div>
-                        <h5>Project 34 –  Smart Distance Monitoring station</h5>
-                        <p>Uses ultrasonic radar pulse waves to monitor, track, and display exact physical object distances in real time.</p>
-                    </a>
-                </div>
-                 <div class="col-sm-6 col-lg-4">
-                    <a href="#projects" class="cat-card" onclick="showProjectPhoto('project35.png', 'Project 35 –  complete Multi-Sensor Monitoring Dashboard')">
-                        <div class="cat-icon  bg-purple"><i class="fas fa-tachometer-alt c-purple"></i></div>
-                        <h5>Project 35 –  complete Multi-Sensor Monitoring Dashboard</h5>
-                        <p>Integrates light, temperature, and distance sensors into a unified display hub for full environmental data telemetry.</p>
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project5.png','Resources kit 2 images/project5code1.png'], 'Project 5 – Ultrasonic Distance Monitor'); return false;">
+                        <div class="cat-icon bg-pink"><i class="fas fa-broadcast-tower  c-pink"></i></div>
+                        <h5>Project 5 – Ultrasonic Distance Monitor</h5>
+                        <p>A smart sensor system that measures spatial ranges and detects object proximity using
+                            ultrasonic sound waves.</p>
                     </a>
                 </div>
 
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project6.png','Resources kit 2 images/project6code1.png','Resources kit 2 images/project6code2.png'], 'Project 6 – Mobile Controlled Servo Motor'); return false;">
+                        <div class="cat-icon bg-purple"><i class="fas fa-cog c-purple"></i></div>
+                        <h5>Project 6 – Mobile Controlled Servo Motor</h5>
+                        <p>A precision mechanical driver that receives remote wireless signals to adjust motor angles
+                            and angular rotations.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project7.png','Resources kit 2 images/project7code1.png','Resources kit 2 images/project7code2.png'], 'Project 7 – Light Intensity Monitor'); return false;">
+                        <div class="cat-icon bg-blue"><i class="fas fa-sun c-blue"></i></div>
+                        <h5>Project 7 – Light Intensity Monitor</h5>
+                        <p>A smart ambient tracking system that measures environmental brightness levels and displays
+                            real-time illumination data.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project8.png','Resources kit 2 images/project8code1.png','Resources kit 2 images/project8code2.png'], 'Project 8 – Temperature Alarm System'); return false;">
+                        <div class="cat-icon bg-green"><i class="fas fa-bell c-green"></i></div>
+                        <h5>Project 8 – Temperature Alarm System</h5>
+                        <p>A smart safety system that monitors environmental heat levels and triggers an audible alarm
+                            if temperatures get too high.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project9.png','Resources kit 2 images/project9code1.png','Resources kit 2 images/project9code2.png'], 'Project 9 – Smart Ir Remote Control System'); return false;">
+                        <div class="cat-icon bg-orange"><i class="fas fa-tv c-orange"></i></div>
+                        <h5>Project 9 – Smart Ir Remote Control System</h5>
+                        <p>A wireless setup that captures infrared signals to control home entertainment devices and
+                            appliances remotely.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project10.png','Resources kit 2 images/project10code1.png','Resources kit 2 images/project10code2.png'], 'Project 10 – Sound Level Monitoring System'); return false;">
+                        <div class="cat-icon bg-cyan"><i class="fas fa-microphone c-white"></i></div>
+                        <h5>Project 10 – Sound Level Monitoring System</h5>
+                        <p>A smart acoustic setup that measures environmental volume levels and tracks noise intensity
+                            in real time.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project11.png','Resources kit 2 images/project11code1.png','Resources kit 2 images/project11code2.png'], 'Project 11 - Smart Sensor Dashboard'); return false;">
+                        <div class="cat-icon bg-peach"><i class="fas fa-chart-pie c-peach"></i></div>
+                        <h5>Project 11 - Smart Sensor Dashboard</h5>
+                        <p>An interactive data panel that monitors multiple sensor feeds and displays real-time
+                            environmental telemetry.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project12.png','Resources kit 2 images/project12code1.png'], 'Project 12 – Environmental Monitoring Station'); return false;">
+                        <div class="cat-icon bg-pink"><i class="fas fa-cloud-sun c-pink"></i></div>
+                        <h5>Project 12 – Environmental Monitoring Station</h5>
+                        <p>A comprehensive climate node that monitors surrounding atmospheric conditions, air quality,
+                            and outdoor weather metrics.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project13.png','Resources kit 2 images/project13code1.png','Resources kit 2 images/project13code2.png'], 'Project 13 – Oled Sensor Dashboard'); return false;">
+                        <div class="cat-icon bg-bronze"><i class="fas fa-tablet-alt c-bronze"></i></div>
+                        <h5>Project 13 – Oled Sensor Dashboard</h5>
+                        <p>A compact micro-display interface that draws real-time sensor metrics and live readouts
+                            directly on an OLED screen.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project14.png','Resources kit 2 images/project14code1.png','Resources kit 2 images/project14code2.png'], 'Project 14 – LCD Sensor Monitor'); return false;">
+                        <div class="cat-icon bg-orange"><i class="fas fa-desktop c-white"></i></div>
+                        <h5>Project 14 – LCD Sensor Monitor</h5>
+                        <p>Interfaces a character LCD panel to display live text outputs, data readouts, and status
+                            codes from connected sensors.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project15.png','Resources kit 2 images/project15code1.png','Resources kit 2 images/project15code2.png'], 'Project 15 – Oled Weather Station'); return false;">
+                        <div class="cat-icon bg-purple"><i class="fas fa-cloud-sun c-purple"></i></div>
+                        <h5>Project 15 – Oled Weather Station</h5>
+                        <p>A smart weather node that displays real-time microclimate metrics like temperature and
+                            humidity on a crisp OLED screen.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project16.png','Resources kit 2 images/project16code1.png','Resources kit 2 images/project16code2.png','Resources kit 2 images/project16code3.png'], 'Project 16 – IoT Sensor Monitor'); return false;">
+                        <div class="cat-icon bg-green"><i class="fas fa-network-wired c-green"></i></div>
+                        <h5>Project 16 – IoT Sensor Monitor</h5>
+                        <p>A cloud-connected network module that uploads live sensor telemetry to the internet for
+                            remote online viewing.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project17.png','Resources kit 2 images/project17code1.png','Resources kit 2 images/project17code2.png'], 'Project 17 – Smart Home Automation'); return false;">
+                        <div class="cat-icon bg-orange"><i class="fas fa-home c-orange"></i></div>
+                        <h5>Project 17 – Smart Home Automation</h5>
+                        <p>A central automation system that links appliances, lights, and sensors together for smart
+                            remote household control.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project18.png','Resources kit 2 images/project18code1.png','Resources kit 2 images/project18code2.png'], 'Project 18 – Automatic Night Lamp'); return false;">
+                        <div class="cat-icon bg-pink"><i class="fas fa-moon c-pink"></i></div>
+                        <h5>Project 18 – Automatic Night Lamp</h5>
+                        <p>A smart energy-saving lamp that detects surrounding darkness and automatically switches on a
+                            light source.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project19.png','Resources kit 2 images/project19code1.png','Resources kit 2 images/project19code2.png','Resources kit 2 images/project19code3.png'], 'Project 19 – Smart Door Lock'); return false;">
+                        <div class="cat-icon bg-danger"><i class="fas fa-lock c-danger"></i></div>
+                        <h5>Project 19 – Smart Door Lock</h5>
+                        <p>An electronic access system that secures entry points and unlocks doors wirelessly using
+                            entry codes or smartphones.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project20.png','Resources kit 2 images/project20app1.png','Resources kit 2 images/project20code1.png','Resources kit 2 images/project20code2.png'], 'Project 20 – Smart IR Remote'); return false;">
+                        <div class="cat-icon bg-teal"><i class="fas fa-tv c-teal"></i></div>
+                        <h5>Project 20 – Smart IR Remote</h5>
+                        <p>A multi-device wireless hub that records and mirrors remote control infrared frequencies to
+                            manage appliances.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project21.png','Resources kit 2 images/project21code1.png','Resources kit 2 images/project21code2.png'], 'Project 21 – Smart Temp & Humidity Monitor'); return false;">
+                        <div class="cat-icon bg-blue"><i class="fas fa-thermometer-half c-blue"></i></div>
+                        <h5>Project 21 – Smart Temp & Humidity Monitor</h5>
+                        <p>A climate observation system that records atmospheric heat levels and moisture ratios for
+                            environmental tracking.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project22.png','Resources kit 2 images/project22code1.png','Resources kit 2 images/project22code2.png','Resources kit 2 images/project22code3.png'], 'Project 22 – Smart Motion / Visitor Detector Alarm'); return false;">
+                        <div class="cat-icon bg-danger"><i class="fas fa-walking c-white"></i></div>
+                        <h5>Project 22 – Smart Motion / Visitor Detector Alarm</h5>
+                        <p>A home security setup that monitors room movement and sets off an instant alarm warning when
+                            visitors are detected.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project23.png','Resources kit 2 images/project23code1.png','Resources kit 2 images/project23code2.png'], 'Project 23 – Smart Parking Slot Indicator'); return false;">
+                        <div class="cat-icon bg-orange"><i class="fas fa-car c-white"></i></div>
+                        <h5>Project 23 – Smart Parking Slot Indicator</h5>
+                        <p>A smart detection system that tracks vacant spaces and displays live availability updates for
+                            incoming drivers.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project24.png','Resources kit 2 images/project24code1.png','Resources kit 2 images/project24code2.png'], 'Project 24 – Smart Door Alert System'); return false;">
+                        <div class="cat-icon bg-purple"><i class="fas fa-bell c-white"></i></div>
+                        <h5>Project 24 – Smart Door Alert System</h5>
+                        <p>A smart security node that monitors entryway states and flashes immediate notifications when
+                            a door opens.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project25.png','Resources kit 2 images/project25code1.png','Resources kit 2 images/project25code2.png'], 'Project 25 – Smart Light Controlled'); return false;">
+                        <div class="cat-icon bg-blue"><i class="fas fa-lightbulb c-blue"></i></div>
+                        <h5>Project 25 – Smart Light Controlled</h5>
+                        <p>A smart lighting module that automatically adjusts room brightness or switches lamps based on
+                            surrounding conditions.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project26.png','Resources kit 2 images/project26code1.png','Resources kit 2 images/project26code2.png'], 'Project 26 – Temperature Controlled DC Motor Fan'); return false;">
+                        <div class="cat-icon bg-teal"><i class="fas fa-fan c-teal"></i></div>
+                        <h5>Project 26 – Temperature Controlled DC Motor Fan</h5>
+                        <p>An automated cooling system that detects heat shifts and changes motor speeds to regulate
+                            ventilation.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project27.png','Resources kit 2 images/project27code1.png','Resources kit 2 images/project27code2.png','Resources kit 2 images/project27app.png'], 'Project 27 – Smart Temperature Alert System'); return false;">
+                        <div class="cat-icon bg-danger"><i class="fas fa-thermometer c-blue"></i></div>
+                        <h5>Project 27 – Smart Temperature Alert System</h5>
+                        <p>A smart safety node that constantly tracks room heat levels and sounds a warning notification
+                            if thresholds are crossed.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project28.png','Resources kit 2 images/project28code1.png','Resources kit 2 images/project28code2.png'], 'Project 28 – Advanced RFID Door Security System'); return false;">
+                        <div class="cat-icon bg-success"><i class="fas fa-id-card c-white"></i></div>
+                        <h5>Project 28 – Advanced RFID Door Security System</h5>
+                        <p>A secure access control system that scans contactless key fobs or badges to unlock door
+                            pathways for authorized users.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project29.png','Resources kit 2 images/project29app.png','Resources kit 2 images/project29code1_.png','Resources kit 2 images/project29code2.png'], 'Project 29 – Smart Environmental Monitor'); return false;">
+                        <div class="cat-icon bg-pink"><i class="fas fa-cloud-sun c-pink"></i></div>
+                        <h5>Project 29 – Smart Environmental Monitor</h5>
+                        <p>A smart climate tracking module that reviews surrounding air metrics and uploads atmospheric
+                            data in real time.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project30.png','Resources kit 2 images/project30code1.png','Resources kit 2 images/project30code2.png','Resources kit 2 images/project30appmaking.png','Resources kit 2 images/project30app.png'], 'Project 30 – Smart Ultrasonic Distance Meter'); return false;">
+                        <div class="cat-icon bg-pink"><i class="fas fa-broadcast-tower c-white"></i></div>
+                        <h5>Project 30 – Smart Ultrasonic Distance Meter</h5>
+                        <p>A wireless measuring module that uses high-frequency sound waves to gauge spatial gaps and
+                            sends live readings to a mobile app.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project31.png','Resources kit 2 images/project31code1.png','Resources kit 2 images/project31code2.png','Resources kit 2 images/project31app.png','Resources kit 2 images/project31guide.png'], 'Project 31 – Bluetooth Controlled Robot Car'); return false;">
+                        <div class="cat-icon bg-orange"><i class="fas fa-robot c-white"></i></div>
+                        <h5>Project 31 – Bluetooth Controlled Robot Car</h5>
+                        <p>A remote-controlled vehicular project that processes smartphone directional keys over
+                            Bluetooth to drive and steer motor wheels.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project32.png','Resources kit 2 images/project32code1.png','Resources kit 2 images/project32code2.png','Resources kit 2 images/project32code3.png','Resources kit 2 images/project32code4.png'], 'Project 32 – Ultrasonic Obstacle Avoiding Robot Car'); return false;">
+                        <div class="cat-icon bg-purple"><i class="fas fa-shield-alt c-white"></i></div>
+                        <h5>Project 32 – Ultrasonic Obstacle Avoiding Robot Car</h5>
+                        <p>An smart autonomous vehicle that scans the path ahead using an ultrasonic sensor to detect
+                            blocks and safely navigate around them.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project33.png','Resources kit 2 images/project33code1.png','Resources kit 2 images/project33code2.png','Resources kit 2 images/project33code3.png','Resources kit 2 images/project33code4.png'], 'Project 33 – Line Follower Robot (4Wd)'); return false;">
+                        <div class="cat-icon bg-orange"><i class="fas fa-route c-white"></i></div>
+                        <h5>Project 33 – Line Follower Robot (4Wd)</h5>
+                        <p>An autonomous navigation rover that tracks a solid floor trail using infrared ground sensors
+                            to manage wheel steering loops.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project34.png','Resources kit 2 images/project34code1.png','Resources kit 2 images/project34code2.png','Resources kit 2 images/project34code3.png','Resources kit 2 images/project34code4.png'], 'Project 34 – Smart Patrol Robot (4wd)'); return false;">
+                        <div class="cat-icon bg-danger"><i class="fas fa-shield-alt c-white"></i></div>
+                        <h5>Project 34 – Smart Patrol Robot (4wd)</h5>
+                        <p>A mobile surveillance vehicle that navigates specific areas autonomously while scanning for
+                            barriers and security alerts.</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <a href="javascript:void(0)" class="cat-card"
+                        onclick="showProjectPhoto(['Resources kit 2 images/project35.png','Resources kit 2 images/project35code1.png','Resources kit 2 images/project35code2.png','Resources kit 2 images/project35code3.png','Resources kit 2 images/project35code4.png','Resources kit 2 images/project35code5.png','Resources kit 2 images/project35code6.png'], 'Project 35 – Multi-Mode Smart Robot (4WD)'); return false;">
+                        <div class="cat-icon bg-green"><i class="fas fa-bell c-green"></i></div>
+                        <h5>Project 35 – Multi-Mode Smart Robot (4WD)</h5>
+                        <p>An advanced autonomous vehicular platform capable of switching operating behaviors like line
+                            tracking or obstacle avoidance.</p>
+                    </a>
+                </div>
 
             </div>
         </div>
     </section>
 
-    <!-- ── Lightbox Modal ── -->
-  <div id="lightbox" onclick="closeLightbox(event)">
- 
-        <!-- Left Arrow -->
-        <button id="lb-prev" class="lb-arrow hidden" onclick="changePhoto(-1)">&#8249;</button>
- 
-        <div id="lightbox-inner">
-            <button id="lightbox-close" onclick="closeLightboxBtn()">&#x2715;</button>
-            <img id="lightbox-img" src="" alt="Project Photo" />
+    <div id="lightbox" onclick="closeLightbox(event)">
+
+        <button id="lb-prev" class="lb-arrow hidden" onclick="event.stopPropagation(); changePhoto(-1)">&#8249;</button>
+
+        <div id="lightbox-inner" onclick="event.stopPropagation()">
+            <button id="lightbox-close" onclick="closeLightboxBtn(event)">&#x2715;</button>
+            <div class="lightbox-img-container">
+                <img id="lightbox-img" src="" alt="Project Content Layout" />
+            </div>
             <p id="lightbox-caption"></p>
             <div id="lightbox-counter"></div>
             <div id="lightbox-dots"></div>
         </div>
- 
-        <!-- Right Arrow -->
-        <button id="lb-next" class="lb-arrow hidden" onclick="changePhoto(1)">&#8250;</button>
- 
+
+        <button id="lb-next" class="lb-arrow hidden" onclick="event.stopPropagation(); changePhoto(1)">&#8250;</button>
+
     </div>
- 
- 
-    <!-- Bootstrap JS -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-<script>
-   /* ════════════════════════════════════════
-           LIGHTBOX – supports 1, 2, or 3 photos
-        ════════════════════════════════════════ */
- 
-        let _photos  = [];   // array of image file paths
-        let _title   = '';   // project title
-        let _current = 0;    // current index
- 
-        /**
-         * Call with a single string  OR an array of strings.
-         * Examples:
-         *   showProjectPhoto('project1.png', 'Project 1')
-         *   showProjectPhoto(['project2a.png','project2b.png'], 'Project 2')
-         *   showProjectPhoto(['p3a.png','p3b.png','p3c.png'], 'Project 3')
-         */
-        function showProjectPhoto(images, title) {
-            _photos  = Array.isArray(images) ? images : [images];
-            _title   = title;
-            _current = 0;
- 
-            renderLightbox();
-            document.getElementById('lightbox').classList.add('open');
-            document.body.style.overflow = 'hidden';
+
+    <script>
+        /* ═════════════════════════════════════════════════════════════
+            LIGHTBOX CORE TOUCH & NAVIGATION TRANSLATION MODULE
+           ═════════════════════════════════════════════════════════════ */
+
+        let _photos = [];
+        let _title = '';
+        let _current = 0;
+
+        // Zoom Matrices Vectors 
+        let scale = 1;
+        let startDist = 0;
+        let lastScale = 1;
+
+        let posX = 0, posY = 0;
+        let startX = 0, startY = 0;
+        let lastPosX = 0, lastPosY = 0;
+        let isDragging = false;
+
+        // Swipe Trackers
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const imgEl = document.getElementById('lightbox-img');
+
+        if (imgEl) {
+            imgEl.addEventListener('touchstart', handleTouchStart, { passive: false });
+            imgEl.addEventListener('touchmove', handleTouchMove, { passive: false });
+            imgEl.addEventListener('touchend', handleTouchEnd, { passive: false });
         }
- 
-        function renderLightbox() {
-            const total = _photos.length;
-            const img   = document.getElementById('lightbox-img');
- 
-            /* Fade transition */
-            img.style.opacity = '0';
-            setTimeout(() => {
-                img.src           = _photos[_current];
-                img.style.opacity = '1';
-            }, 150);
- 
-            document.getElementById('lightbox-caption').textContent = _title;
- 
-            /* Counter label: only show if multiple photos */
-            const counter = document.getElementById('lightbox-counter');
-            counter.textContent = total > 1 ? `Photo ${_current + 1} of ${total}` : '';
- 
-            /* Dot indicators */
-            const dotsEl = document.getElementById('lightbox-dots');
-            dotsEl.innerHTML = '';
-            if (total > 1) {
-                _photos.forEach((_, i) => {
-                    const dot = document.createElement('span');
-                    dot.className = 'lb-dot' + (i === _current ? ' active' : '');
-                    dot.onclick   = (e) => { e.stopPropagation(); goTo(i); };
-                    dotsEl.appendChild(dot);
-                });
+
+        function showProjectPhoto(images, title) {
+            _photos = Array.isArray(images) ? images : [images];
+            _title = title;
+            _current = 0;
+
+            updateImageTransforms(1, 0, 0);
+            renderLightbox();
+
+            const lightboxEl = document.getElementById('lightbox');
+            if (lightboxEl) {
+                lightboxEl.classList.add('open');
+                document.body.style.overflow = 'hidden';
             }
- 
-            /* Arrow visibility */
+        }
+
+        function renderLightbox() {
+            if (_photos.length === 0) return;
+
+            const total = _photos.length;
+            const img = document.getElementById('lightbox-img');
+            if (!img) return;
+
+            img.src = _photos[_current];
+            document.getElementById('lightbox-caption').textContent = _title;
+
+            const counter = document.getElementById('lightbox-counter');
+            if (counter) {
+                counter.textContent = total > 1 ? `Photo ${_current + 1} of ${total}` : '';
+            }
+
+            const dotsEl = document.getElementById('lightbox-dots');
+            if (dotsEl) {
+                dotsEl.innerHTML = '';
+                if (total > 1) {
+                    _photos.forEach((_, i) => {
+                        const dot = document.createElement('span');
+                        dot.className = 'lb-dot' + (i === _current ? ' active' : '');
+                        dot.onclick = (e) => { e.stopPropagation(); goTo(i); };
+                        dotsEl.appendChild(dot);
+                    });
+                }
+            }
+
             const prev = document.getElementById('lb-prev');
             const next = document.getElementById('lb-next');
-            prev.classList.toggle('hidden', total <= 1 || _current === 0);
-            next.classList.toggle('hidden', total <= 1 || _current === total - 1);
+            if (prev && next) {
+                if (total <= 1) {
+                    prev.classList.add('hidden');
+                    next.classList.add('hidden');
+                } else {
+                    prev.classList.toggle('hidden', _current === 0);
+                    next.classList.toggle('hidden', _current === total - 1);
+                }
+            }
         }
- 
+
         function goTo(index) {
             _current = index;
+            updateImageTransforms(1, 0, 0);
             renderLightbox();
         }
- 
+
         function changePhoto(dir) {
             const newIndex = _current + dir;
             if (newIndex >= 0 && newIndex < _photos.length) {
                 goTo(newIndex);
             }
         }
- 
-        /* Close on overlay click */
-        function closeLightbox(event) {
-            if (event.target === document.getElementById('lightbox')) closeAll();
-        }
- 
-        function closeLightboxBtn() { closeAll(); }
- 
-        function closeAll() {
-            document.getElementById('lightbox').classList.remove('open');
-            document.body.style.overflow = '';
-        }
- 
-        /* Keyboard navigation */
-        document.addEventListener('keydown', function (e) {
-            if (!document.getElementById('lightbox').classList.contains('open')) return;
-            if (e.key === 'Escape')      closeAll();
-            if (e.key === 'ArrowLeft')   changePhoto(-1);
-            if (e.key === 'ArrowRight')  changePhoto(1);
-        });
- 
-        /* ── Filter Function (placeholder) ── */
-        function filterProjects(category) {
-            console.log('Filter:', category);
-        }
-    </script>
-   
 
+        function updateImageTransforms(s, x, y) {
+            scale = s;
+            posX = x;
+            posY = y;
+            if (imgEl) {
+                imgEl.style.setProperty('--zoom-scale', s);
+                imgEl.style.setProperty('--zoom-x', `${x}px`);
+                imgEl.style.setProperty('--zoom-y', `${y}px`);
+            }
+        }
+
+        /* ── RUNTIME RECEPTORS FOR TOUCH INTERACTIONS ── */
+        function handleTouchStart(e) {
+            if (e.touches.length === 2) {
+                e.preventDefault();
+                isDragging = false;
+                let t1 = e.touches[0];
+                let t2 = e.touches[1];
+                startDist = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+                lastScale = scale;
+            } else if (e.touches.length === 1) {
+                touchStartX = e.touches[0].clientX;
+                if (scale > 1) {
+                    isDragging = true;
+                    startX = e.touches[0].clientX - lastPosX;
+                    startY = e.touches[0].clientY - lastPosY;
+                }
+            }
+        }
+
+        function handleTouchMove(e) {
+            if (e.touches.length === 2) {
+                e.preventDefault();
+                let t1 = e.touches[0];
+                let t2 = e.touches[1];
+                let dist = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+
+                let newScale = (dist / startDist) * lastScale;
+                if (newScale < 1) newScale = 1;
+                if (newScale > 4) newScale = 4;
+
+                updateImageTransforms(newScale, posX, posY);
+            } else if (e.touches.length === 1) {
+                touchEndX = e.touches[0].clientX;
+                if (isDragging && scale > 1) {
+                    e.preventDefault();
+                    let newX = e.touches[0].clientX - startX;
+                    let newY = e.touches[0].clientY - startY;
+                    updateImageTransforms(scale, newX, newY);
+                }
+            }
+        }
+
+        function handleTouchEnd(e) {
+            if (scale > 1) {
+                lastPosX = posX;
+                lastPosY = posY;
+                isDragging = false;
+            }
+
+            if (e.touches.length === 0) {
+                if (scale <= 1) {
+                    updateImageTransforms(1, 0, 0);
+                    if (_photos.length > 1) {
+                        handleSwipeGesture();
+                    }
+                }
+            }
+        }
+
+        function handleSwipeGesture() {
+            let threshold = 50;
+            let deltaX = touchStartX - touchEndX;
+
+            if (Math.abs(deltaX) > threshold && touchEndX !== 0) {
+                if (deltaX > 0) {
+                    changePhoto(1);
+                } else {
+                    changePhoto(-1);
+                }
+            }
+            touchStartX = 0;
+            touchEndX = 0;
+        }
+
+        function closeLightbox(event) {
+            if (event.target === document.getElementById('lightbox')) {
+                closeAll();
+            }
+        }
+
+        function closeLightboxBtn(event) {
+            if (event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            closeAll();
+        }
+
+        function closeAll() {
+            const lightboxEl = document.getElementById('lightbox');
+            if (lightboxEl) {
+                lightboxEl.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+            updateImageTransforms(1, 0, 0);
+        }
+
+        document.addEventListener('keydown', function (e) {
+            const lightboxEl = document.getElementById('lightbox');
+            if (!lightboxEl || !lightboxEl.classList.contains('open')) return;
+            if (e.key === 'Escape') closeAll();
+            if (e.key === 'ArrowLeft') changePhoto(-1);
+            if (e.key === 'ArrowRight') changePhoto(1);
+        });
+    </script>
 </body>
+
 </html>
